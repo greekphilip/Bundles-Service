@@ -22,7 +22,7 @@ Go to src/main/resources and edit the ![application.properties](https://imgur.co
 To test it go to your browser and type http://localhost:8080/bundle. If all bundles appear that means the project has been succesfully set up!
 
 ## 6. Download "Advanced REST client"
-Download "Advanced REST client" extension for Google Chrome to test the API localy.
+Download "Advanced REST client" extension for Google Chrome to test the API locally.
 
 ## 7. How to use API - Requests and Responses
 
