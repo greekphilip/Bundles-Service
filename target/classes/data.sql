@@ -1,0 +1,1 @@
+INSERT INTO bundle(name, price, expiration, availability) VALUES ('Free4All', 0.0,'2019-10-16','2019-09-20');
