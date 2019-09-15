@@ -1,2 +1,6 @@
-com\company\bundleservice\MainClass.class
 com\company\bundleservice\BundleController.class
+com\company\bundleservice\Bundle.class
+com\company\bundleservice\SwaggerConfig.class
+com\company\bundleservice\AppMainClass.class
+.netbeans_automatic_build
+com\company\bundleservice\BundleRepository.class

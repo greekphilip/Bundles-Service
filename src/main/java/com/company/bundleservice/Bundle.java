@@ -6,6 +6,8 @@
 package com.company.bundleservice;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,18 +15,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@ApiModel
 public class Bundle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)     
     private Integer code;
     
+    @ApiModelProperty(example="Free4All")
     private String name;
+    @ApiModelProperty(example="0.0")
     private double price;
     
+    @ApiModelProperty(example="2019-10-25")
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date expiration;
     
+    @ApiModelProperty(example="2019-10-20")
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date availability;
     
