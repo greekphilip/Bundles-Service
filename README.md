@@ -16,7 +16,7 @@ Insert Mock Data
 #### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Offer3', 2.0,'2019-10-16','2019-09-20');
 #### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Offer4', 4.0,'2019-10-16','2019-09-20');
 ## 4. Fix Database Connection Settings
-Go to src/main/resources and edit the ![application.properties]\(https://imgur.com/k5A9tV9) file so that username and password match the settings of your database
+Go to src/main/resources and edit the ![application.properties](https://i.imgur.com/k5A9tV9.png) file so that username and password match the settings of your database
 
 ## 5. The project should be able to run 
 To test it go to your browser and type http://localhost:8080/bundle. If all bundles appear that means the project has been succesfully set up!
