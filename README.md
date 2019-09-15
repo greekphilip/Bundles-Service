@@ -13,35 +13,26 @@ Install MySQL, open the command-line terminal and run the following commands
 Insert Mock Data
 #### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Free4All', 0.0,'2019-10-16','2019-09-20');
 #### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Offer2', 5.0,'2019-10-16','2019-09-20');
-#### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Offer3', 2.0,'2019-10-16','2019-09-20');
+#### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Bundle', 2.0,'2019-10-16','2019-09-20');
 #### INSERT INTO bundle(name, price, expiration, availability) VALUES ('Offer4', 4.0,'2019-10-16','2019-09-20');
 ## 4. Fix Database Connection Settings
 Go to src/main/resources and edit the application.properties file so that username and password match the settings of your database  
 ![application.properties](https://i.imgur.com/0h0qqTb.png)
 
 ## 5. The project should be able to run 
-To test it go to your browser and type http://localhost:8080/bundle. If all bundles appear that means the project has been succesfully set up!
+To test it, run the project, go to your browser and type http://localhost:8080/swagger-ui.html. If Swagger UI appears the project has been succesfully set up!
 
-## 6. Download "Advanced REST client"
-Download "Advanced REST client" extension for Google Chrome to test the API locally.
-
-## 7. How to use API - Requests and Responses
-
-#### a. View all bundles
-Request: GET - localhost:8080/bundle  
-Response: All bundles in JSON format
-
-#### b. Create new bundle
-Request: POST - localhost:8080/bundle  
-   
-Body:{  
-"name": "nameOfBundle",  
-  "price": 0.0,  
-  "expiration" : "2019-10-31",  
-"availability": "2019-10-16"  
-}  
-  
-  Response: The newly created bundle in JSON format
-#### c. Delete bundle with code 1
-Request: DELETE - localhost:8080/bundle/1
-Response: TRUE if successfully deleted
+## 6. Swagger UI
+Use Swagger User Interface to test the API. There are functions for:
+#### a. Retrieving all bundles
+The bundles can also be sorted by price with the "orderby" parameter which can take the values "asc"/"desc".
+#### b. Creating a new bundle
+A new bundle can be created and stored in the database if the required parameters are added to the body in JSON format.
+#### c. Searching bundles by name
+Bundles can be searched by name with the "name" parameter. The resulting bundles can also be sorted with the "orderby" parameter.
+#### d. Deleting a bundle
+A specific bundle can be deleted by supplying its code.
+#### e. Retrieving bundles by code
+A specific bundle can be retrieved by supplying its code.
+#### f. Updating the availability date of a bundle
+The availability date of a bundle can be updated by suplying its code and the new availability date in the body (JSON format).
