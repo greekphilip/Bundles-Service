@@ -36,3 +36,8 @@ A specific bundle can be deleted by supplying its code.
 A specific bundle can be retrieved by supplying its code.
 #### f. Updating the availability date of a bundle
 The availability date of a bundle can be updated by suplying its code and the new availability date in the body (JSON format).
+
+  
+  ## BONUS
+  #### Security - Authentication
+  If we were to make the API more secure we would have to include an authentication feature. To do this we would use the WebSecurityConfigurerAdapter which we would include in our project by adding the spring-boot-starter-security dependency. Then we would configure a utility class which would require the user to enter authentication credentials before being able to access any configured URL.
