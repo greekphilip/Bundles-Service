@@ -5,11 +5,10 @@
  */
 package com.company.bundleservice;
 
-import io.swagger.annotations.ApiModelProperty;
+
 import io.swagger.annotations.ApiOperation;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +33,7 @@ public class BundleController {
     BundleRepository bundleRepository;
     
     
-    //Display all bundles
+    //Display all bundles and choose ascending or descending order(optional)
      @ApiOperation(value = "Retrieve all bundles", notes="Retrieves all bundles. Use 'asc' or 'desc' parameter to order by price (optional).")
      @ResponseStatus(HttpStatus.OK)
      @GetMapping("/bundles")
@@ -89,7 +88,7 @@ public class BundleController {
         return bundleRepository.save(bundle);
     }
     
-    //Querying bundles by code
+    //Query bundles by code
     @ApiOperation(value = "Retrieve specific bundle", notes="Enter code of a specific bundle to retrieve it")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("bundles/{code}")
@@ -98,6 +97,7 @@ public class BundleController {
         return bundleRepository.findOne(bundleCode);
     }
     
+    //Query bundles by name and choose ascending or descending order(optional)
     @ApiOperation(value = "Search bundles by name", notes="Search bundles using name parameter. Use 'asc' or 'desc' to order by price (optional).")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("bundles/findByName")

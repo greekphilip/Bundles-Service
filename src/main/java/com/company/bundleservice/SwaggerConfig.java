@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import static springfox.documentation.builders.PathSelectors.regex;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -23,7 +24,12 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.company.bundleservice"))
                 .paths(regex("/.*"))
-                .build();
+                .build().apiInfo(metaInfo());
+    }
+
+    private ApiInfo metaInfo() {
+        ApiInfo apiInfo = new ApiInfo("RESTful API Exercise, Spring Boot, Swagger UI", "REST API Exercise","1.0","Terms of Service",new Contact("Filippos Papaspyrou","https://www.linkedin.com/in/filppospapaspyrou","p.papaspyrou@yahoo.com"),"Apache License Version 2.0","http://www.apache.org/licenses");
+        return apiInfo;
     }
 
 
