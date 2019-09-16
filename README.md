@@ -21,7 +21,7 @@ Go to src/main/resources and edit the application.properties file so that userna
 
 ## 5. The project should be able to run 
 To test it, run the project, go to your browser and type http://localhost:8080/swagger-ui.html. If Swagger UI appears the project has been succesfully set up!
-![home](https://imgur.com/11291b3e-f82e-4e61-80b0-2bf7f0b6f48f)
+![home](https://i.imgur.com/IMh1kLj.png)
 ## 6. Swagger UI
 Use Swagger User Interface to test the API. There are functions for:
 #### a. Retrieving all bundles
