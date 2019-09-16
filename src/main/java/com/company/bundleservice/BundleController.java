@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,7 @@ public class BundleController {
     @PostMapping("/bundles")
     public Bundle create(@RequestBody Map<String,String> body) throws ParseException{
             Date expiration;
+            Date availability = new SimpleDateFormat("yyyy-MM-dd").parse(body.get("availability"));
             try{
                  expiration = new SimpleDateFormat("yyyy-MM-dd").parse(body.get("expiration"));
             }catch(NullPointerException e){
@@ -61,10 +63,8 @@ public class BundleController {
             }
             String name = body.get("name");
             Double price = Double.parseDouble(body.get("price"));
-            Date availability = new SimpleDateFormat("yyyy-MM-dd").parse(body.get("availability"));
             
-            
-            return bundleRepository.save(new Bundle(name,price,expiration,availability));
+            return bundleRepository.save(new Bundle(name,price,new java.sql.Date(expiration.getTime()),new java.sql.Date(availability.getTime())));
     }
     
     //Delete exisitng bundle
@@ -85,7 +85,7 @@ public class BundleController {
         int bundleCode=Integer.parseInt(code);
         Bundle bundle = bundleRepository.findOne(bundleCode);
         Date availability = new SimpleDateFormat("yyyy-MM-dd").parse(body.get("availability"));
-        bundle.setAvailability(availability);
+        bundle.setAvailability(new java.sql.Date(availability.getTime()));
         return bundleRepository.save(bundle);
     }
     
@@ -111,4 +111,5 @@ public class BundleController {
         }
         return null;
     }
+    
 }
