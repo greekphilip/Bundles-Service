@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/bundles")
 public class BundleController {
     
     @Autowired
@@ -36,7 +36,7 @@ public class BundleController {
     //Display all bundles and choose ascending or descending order(optional)
      @ApiOperation(value = "Retrieve all bundles", notes="Retrieves all bundles. Use 'asc' or 'desc' parameter to order by price (optional).")
      @ResponseStatus(HttpStatus.OK)
-     @GetMapping("/bundles")
+     @GetMapping("")
     public List<Bundle> index(@RequestParam(defaultValue="code") String orderby){
         if(orderby.equals("code")){
             return bundleRepository.findAll();
@@ -51,7 +51,7 @@ public class BundleController {
     //Create new bundle
     @ApiOperation(value = "Create new bundle", notes="Copy and paste the Example Value to the body and create a new bundle. Change the name, price and availability/expiration dates to whatever you want.")
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/bundles")
+    @PostMapping("")
     public Bundle create(@RequestBody Map<String,String> body) throws ParseException{
             Date expiration;
             Date availability = new SimpleDateFormat("yyyy-MM-dd").parse(body.get("availability"));
@@ -69,7 +69,7 @@ public class BundleController {
     //Delete exisitng bundle
     @ApiOperation(value = "Delete a bundle", notes="Enter the code of the bundle to be deleted.")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/bundles/{code}")
+    @DeleteMapping("/{code}")
     public boolean delete(@PathVariable String code){
         int bundleCode = Integer.parseInt(code);
         bundleRepository.delete(bundleCode);
@@ -79,7 +79,7 @@ public class BundleController {
     //Update the availability date of an existing bundle
     @ApiOperation(value = "Update availability date of a bundle", notes="Enter the code of the bundle to be updated and enter the new availability date in JSON format in the body.")
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("bundles/{code}")
+    @PutMapping("/{code}")
     public Bundle update(@PathVariable String code, @RequestBody Map<String,String> body) throws ParseException{
         int bundleCode=Integer.parseInt(code);
         Bundle bundle = bundleRepository.findOne(bundleCode);
@@ -91,7 +91,7 @@ public class BundleController {
     //Query bundles by code
     @ApiOperation(value = "Retrieve specific bundle", notes="Enter code of a specific bundle to retrieve it")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("bundles/{code}")
+    @GetMapping("/{code}")
     public Bundle findById(@PathVariable String code){
         int bundleCode = Integer.parseInt(code);
         return bundleRepository.findOne(bundleCode);
@@ -100,7 +100,7 @@ public class BundleController {
     //Query bundles by name and choose ascending or descending order(optional)
     @ApiOperation(value = "Search bundles by name", notes="Search bundles using name parameter. Use 'asc' or 'desc' to order by price (optional).")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("bundles/findByName")
+    @GetMapping("/findByName")
     public List<Bundle> findByName( @RequestParam(defaultValue= "") String name, @RequestParam(defaultValue= "code") String orderby){
         if(orderby.equals("code")){
             return bundleRepository.findByNameContaining(name);
