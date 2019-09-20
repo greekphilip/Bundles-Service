@@ -40,7 +40,7 @@ The availability date of a bundle can be updated by suplying its code and the ne
   
   ## BONUS
   #### Security - Authentication
-  If we were to make the API more secure we would have to include an authentication feature. To do this we would use the WebSecurityConfigurerAdapter which we would include in our project by adding the spring-boot-starter-security dependency. Then we would configure a utility class which would require the user to enter authentication credentials before being able to access any configured URL.
+  If we were to make the API more secure, we would have to implement a login feature. To do this we would have to include the spring security dependency in our pom.xml file. We would also have to create new tables in our database which would contain user and role information as well as the respective entity classes in our project. We need these so that when we configure the WebSecurityConfigurerAdapter, the user/password credentials and the role is loaded from the database. This way we will have the ability to create multiple users with different credentials and different roles. We will also use BcryptPasswordEncoder for encoding passwords to avoid saving the passwords in plain text. 
 #### Mobile Application
   This API is meant to be consumed by employees through an administrator interface. If we were to develop an API which would be used by customers through a mobile application some code could be reused. The functions that could be reused for the mobile application are the following:  
   a. Retrieving all bundles and sorting them by price in ascending or descending order.  
